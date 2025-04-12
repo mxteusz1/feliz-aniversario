@@ -10,6 +10,7 @@
       color: #d6336c;
       text-align: center;
       padding: 50px 20px;
+      scroll-behavior: smooth; /* Faz o scroll suave para a segunda parte */
     }
     h1 {
       font-size: 2.5em;
@@ -33,14 +34,88 @@
     .emoji {
       font-size: 2em;
     }
+    /* Estilo do botão */
+    #btnIrParaFotos {
+      padding: 10px 20px;
+      background-color: #d6336c;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-top: 30px;
+      text-decoration: none;
+    }
+    #btnIrParaFotos:hover {
+      background-color: #ff5c8d;
+    }
+    /* Estilo da segunda parte da página */
+    #segundaParte {
+      padding: 50px 20px;
+      background-color: #fff0f5;
+    }
+    .foto {
+      width: 80%;
+      max-width: 400px;
+      margin: 10px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>Feliz aniversário, minha piriquitinha! 🥳💘</h1>
-  <p class="emoji">💖✨</p>
+  <p class="emoji">💖🌸✨</p>
   <p>Desde o dia em que nossos corações se encontraram, o tempo tem sido mágico...</p>
   
-  <div id="contador">08/08/2024</div>
+  <div id="contador">Carregando...</div>
+  
+  <!-- Botão para redirecionar -->
+  <a href="#segundaParte" id="btnIrParaFotos">Ver Nossas Fotos e Mensagens 💖</a>
 
   <!-- Música de fundo -->
-  <iframe src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&loop=1
+  <iframe src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&loop=1&playlist=kPa7bsKwL-c&mute=0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen></iframe>
+
+  <script>
+    const dataEncontro = new Date("2024-08-08T00:00:00");
+
+    function atualizaContador() {
+      const agora = new Date();
+      const diferenca = agora - dataEncontro;
+
+      const segundosTotais = Math.floor(diferenca / 1000);
+      const dias = Math.floor(segundosTotais / 86400);
+      const horas = Math.floor((segundosTotais % 86400) / 3600);
+      const minutos = Math.floor((segundosTotais % 3600) / 60);
+      const segundos = segundosTotais % 60;
+
+      const meses = Math.floor(dias / 30);
+      const diasRestantes = dias % 30;
+
+      document.getElementById("contador").innerHTML =
+        `Estamos juntos há: <strong>${meses}</strong> meses, <strong>${diasRestantes}</strong> dias, ` +
+        `<strong>${horas}</strong> horas, <strong>${minutos}</strong> minutos e <strong>${segundos}</strong> segundos 💞`;
+    }
+
+    setInterval(atualizaContador, 1000);
+    atualizaContador();
+  </script>
+
+  <!-- Segunda parte da página (fotos e mensagens) -->
+  <div id="segundaParte">
+    <h2>Nossas Memórias Juntas 💕</h2>
+    <p>Aqui estão algumas das nossas fotos mais especiais...</p>
+
+    <div>
+      <img src="sua-foto-1.jpg" class="foto" alt="Foto 1">
+      <img src="sua-foto-2.jpg" class="foto" alt="Foto 2">
+      <img src="sua-foto-3.jpg" class="foto" alt="Foto 3">
+    </div>
+
+    <h3>Mensagens para Você, Minha Piriquitinha</h3>
+    <p>Meu amor, cada momento com você é mágico. Desde o nosso primeiro olhar, até cada dia vivido juntos, você é meu tudo. 💖</p>
+    <p>Feliz aniversário! Que nossa história continue linda e cheia de amor! 🌹✨</p>
+  </div>
+</body>
+</html>
